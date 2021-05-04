@@ -5,11 +5,16 @@ Hello, I'm Marine Montailler and this is my repo for your LARAVEL's TEST
 
 
 ## About Front
-Using VueJS - JAVASCRIPT
+Using VueJS 
+@vue/cli 4.5.11
+
+## About Back
+Using LARAVEL
+@Laravel Framework 8.40.0
 
 ## About CSS
 Bootstrap Library
-and public/css/general.css
+&& all my custom CSS rules in public/css/general.css
 
 
 
