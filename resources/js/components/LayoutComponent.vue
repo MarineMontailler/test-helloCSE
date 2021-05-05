@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>TEST LARAVEL</h1>
-    <p></p>
+    <h1>HelloCSE</h1>
+    <br />
     <div class="global-container">
       <list-stars-component
         :ListStars="listStars"
@@ -27,6 +27,10 @@
         @reload="reload"
       ></update-card-component>
     </div>
+    <footer>
+      <img src="/images/clap.png" alt="clap" width="25" />
+      <p>Marine Montailler for HelloCSE</p>
+    </footer>
   </div>
 </template>
 

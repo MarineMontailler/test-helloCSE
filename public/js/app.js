@@ -2155,6 +2155,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -45011,9 +45015,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("TEST LARAVEL")]),
+    _c("h1", [_vm._v("HelloCSE")]),
     _vm._v(" "),
-    _c("p"),
+    _c("br"),
     _vm._v(" "),
     _c(
       "div",
@@ -45064,10 +45068,25 @@ var render = function() {
           ],
           1
         )
-      : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", [
+      _c("img", {
+        attrs: { src: "/images/clap.png", alt: "clap", width: "25" }
+      }),
+      _vm._v(" "),
+      _c("p", [_vm._v("Marine Montailler for HelloCSE")])
+    ])
+  }
+]
 render._withStripped = true
 
 
