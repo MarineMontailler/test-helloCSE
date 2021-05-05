@@ -11,6 +11,7 @@
       <card-component
         :ListStars="listStars"
         :DemandeInfo="selectedStar"
+        @reload="reload"
       ></card-component>
     </div>
     <div style="display: flex; justify-content: center; margin-top: 20px">

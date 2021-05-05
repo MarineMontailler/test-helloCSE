@@ -1,6 +1,7 @@
 /* GENERAL CSS RULES */
 body {
     box-sizing: border-box;
+    background-color: rgb(238, 238, 238);
 }
 h1 {
     text-align: center;
@@ -22,7 +23,7 @@ li {
     display: flex;
     flex-direction: column;
     width: 200px;
-    background-color: rgb(172, 172, 172);
+    background-color: rgb(141, 187, 196);
     border-radius: 5px 0 0 5px;
 }
 .list-container ul {
@@ -74,7 +75,23 @@ li {
 /* FORM */
 .form-container {
     margin : auto;
-    width : 60%;
+    width : 40%;
     display: flex;
     flex-direction: column;
+    padding-bottom : 20px;
+}
+.form-container #description {
+    min-height: 150px;
+    vertical-align:top;
+	overflow:auto;
+    margin:0;
+	border:0;
+	padding:0;
+	vertical-align:top;
+	white-space:normal;
+
+}
+
+input {
+	border:0;
 }

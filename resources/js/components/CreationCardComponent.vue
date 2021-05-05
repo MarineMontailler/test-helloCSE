@@ -26,7 +26,7 @@
         required
       />
       <label for="description">Description : </label>
-      <input
+      <textarea
         type="textarea"
         id="description"
         name="description"
@@ -44,14 +44,13 @@
 import Axios from "axios";
 export default {
   name: "creation-card-component",
-  //   props: ["DemandeInfo"],
   data() {
     return {
       newStar: {},
     };
   },
   created() {
-    console.log("creation form");
+    //
   },
   methods: {
     createStar() {
@@ -67,8 +66,7 @@ export default {
         this.newStar.image != "" &&
         this.newStar.description != ""
       ) {
-        axios
-          .post("/api/stars/new/", newStar)
+        Axios.post("/api/stars/new/", newStar)
           .then((response) => {
             console.log("response ", response);
           })

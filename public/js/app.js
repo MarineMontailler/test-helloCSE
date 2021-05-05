@@ -1950,6 +1950,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1970,6 +1972,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "card-component",
   props: ["ListStars", "DemandeInfo"],
@@ -1978,7 +1981,20 @@ __webpack_require__.r(__webpack_exports__);
       listStars: []
     };
   },
-  created: function created() {}
+  created: function created() {},
+  methods: {
+    deleteStar: function deleteStar(id) {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/stars/delete/" + id).then(function (response) {
+        console.log("Star supprimée");
+      }).then(function () {
+        _this.$emit("reload");
+      })["catch"](function (error) {
+        console.log("error = ", error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2041,14 +2057,12 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "creation-card-component",
-  //   props: ["DemandeInfo"],
   data: function data() {
     return {
       newStar: {}
     };
   },
-  created: function created() {
-    console.log("creation form");
+  created: function created() {//
   },
   methods: {
     createStar: function createStar() {
@@ -2062,7 +2076,7 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       if (this.newStar.firstname != "" && this.newStar.lastname != "" && this.newStar.image != "" && this.newStar.description != "") {
-        axios.post("/api/stars/new/", newStar).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/stars/new/", newStar).then(function (response) {
           console.log("response ", response);
         }).then(function () {
           _this.$emit("reload");
@@ -2092,6 +2106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CardComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardComponent.vue */ "./resources/js/components/CardComponent.vue");
 /* harmony import */ var _ListStarsComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListStarsComponent.vue */ "./resources/js/components/ListStarsComponent.vue");
 /* harmony import */ var _CreationCardComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CreationCardComponent.vue */ "./resources/js/components/CreationCardComponent.vue");
+//
 //
 //
 //
@@ -44594,22 +44609,25 @@ var render = function() {
         _vm._v("\n      " + _vm._s(_vm.DemandeInfo.description) + "\n    ")
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "button-container" }, [
+        _c("button", [_vm._v("Modifier")]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                return _vm.deleteStar(_vm.DemandeInfo.id)
+              }
+            }
+          },
+          [_vm._v("Supprimer")]
+        )
+      ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "button-container" }, [
-      _c("button", [_vm._v("Modifier")]),
-      _vm._v(" "),
-      _c("button", [_vm._v("Supprimer")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -44712,7 +44730,7 @@ var render = function() {
         _vm._v("Description : ")
       ]),
       _vm._v(" "),
-      _c("input", {
+      _c("textarea", {
         directives: [
           {
             name: "model",
@@ -44786,7 +44804,8 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("card-component", {
-          attrs: { ListStars: _vm.listStars, DemandeInfo: _vm.selectedStar }
+          attrs: { ListStars: _vm.listStars, DemandeInfo: _vm.selectedStar },
+          on: { reload: _vm.reload }
         })
       ],
       1

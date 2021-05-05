@@ -16,6 +16,10 @@ Using LARAVEL
 Bootstrap Library
 && all my custom CSS rules in public/css/general.css
 
+## About content
+Source Wikipédia 
+&& About pictures source fenoweb.com
+
 
 
 

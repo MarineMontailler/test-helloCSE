@@ -12,13 +12,14 @@
       </p>
       <div class="button-container">
         <button>Modifier</button>
-        <button>Supprimer</button>
+        <button @click="deleteStar(DemandeInfo.id)">Supprimer</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   name: "card-component",
   props: ["ListStars", "DemandeInfo"],
@@ -28,5 +29,19 @@ export default {
     };
   },
   created() {},
+  methods: {
+    deleteStar(id) {
+      Axios.delete("/api/stars/delete/" + id)
+        .then((response) => {
+          console.log("Star supprimée");
+        })
+        .then(() => {
+          this.$emit("reload");
+        })
+        .catch((error) => {
+          console.log("error = ", error);
+        });
+    },
+  },
 };
 </script>
