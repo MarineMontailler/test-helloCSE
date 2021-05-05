@@ -1,28 +1,80 @@
 /* GENERAL CSS RULES */
+body {
+    box-sizing: border-box;
+}
 h1 {
     text-align: center;
+}
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+/* LAYOUT */
+.global-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+/* LIST  */
+.list-container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: rgb(172, 172, 172);
+    border-radius: 5px 0 0 5px;
+}
+.list-container ul {
+    padding:0;
+    margin:0;
+}
+.list-container ul li {
+    width: 100%;
+    padding: 2px 20px;
+}
+.list-style {
+    background-color: white;
 }
 
 /* CARD */
 .card-container {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    width: 90%;
-    height: auto;
+    width: 600px;
+    min-height: 250px;
     box-shadow: 1px 1px 5px rgb(197, 197, 197);
-    padding: 5px;
+    padding: 20px;
 }
 .card-container h2 {
     margin-left : 20px;
 }
-.card-top {
-    display: flex;
-    margin : 10px;
-}
+
 .photo-container {
     display: flex;
-    width: 150px;
+    float:left;
+    max-width: 150px;
     height: 200px;
-    object-fit: contain;
+    
+}
+.photo-container img {
+    object-fit: cover;
+    max-width: 150px;
+    height: 200px;
+    padding-right : 20px;
+    padding-bottom: 20px;
+}
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+.button-container button {
+    margin-left: 5px;
+    border-radius: 3px;
+}
+
+/* FORM */
+.form-container {
+    margin : auto;
+    width : 60%;
+    display: flex;
+    flex-direction: column;
 }
