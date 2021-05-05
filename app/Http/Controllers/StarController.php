@@ -107,7 +107,7 @@ class StarController extends Controller
             $star->firstname     = $request->firstname;
             $star->lastname      = $request->lastname;
             $star->image         = $request->image;
-            $tache->description  = $request->description;
+            $star->description   = $request->description;
 
             $star->update();
 

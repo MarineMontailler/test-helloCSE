@@ -11,16 +11,21 @@
       <card-component
         :ListStars="listStars"
         :DemandeInfo="selectedStar"
+        :DisplayCreateForm="displayCreateForm"
+        :DisplayUpdateForm="displayUpdateForm"
         @reload="reload"
+        @addCreateForm="addCreateForm"
+        @addUpdateForm="addUpdateForm"
       ></card-component>
     </div>
-    <div style="display: flex; justify-content: center; margin-top: 20px">
-      <button @click="addForm">
-        {{ displayForm ? "Annuler" : "Ajouter" }}
-      </button>
-    </div>
-    <div v-if="displayForm">
+    <div v-if="displayCreateForm">
       <creation-card-component @reload="reload"></creation-card-component>
+    </div>
+    <div v-if="displayUpdateForm">
+      <update-card-component
+        :DemandeInfo="selectedStar"
+        @reload="reload"
+      ></update-card-component>
     </div>
   </div>
 </template>
@@ -30,15 +35,19 @@ import Axios from "axios";
 import CardComponent from "./CardComponent.vue";
 import ListStarsComponent from "./ListStarsComponent.vue";
 import CreationCardComponent from "./CreationCardComponent.vue";
+import UpdateCardComponent from "./UpdateCardComponent.vue";
+
 export default {
   components: {
     "card-component": CardComponent,
     "list-stars-component": ListStarsComponent,
     "creation-card-component": CreationCardComponent,
+    "update-card-component": UpdateCardComponent,
   },
   data() {
     return {
-      displayForm: false,
+      displayCreateForm: false,
+      displayUpdateForm: false,
       listStars: [],
       newStar: {},
       selectedStar: {},
@@ -59,8 +68,13 @@ export default {
           console.log("error = ", error);
         });
     },
-    addForm() {
-      this.displayForm = !this.displayForm;
+    addCreateForm() {
+      this.displayUpdateForm = false;
+      this.displayCreateForm = !this.displayCreateForm;
+    },
+    addUpdateForm() {
+      this.displayCreateForm = false;
+      this.displayUpdateForm = !this.displayUpdateForm;
     },
     reload() {
       window.location.href = "./";

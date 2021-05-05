@@ -11,7 +11,12 @@
         {{ DemandeInfo.description }}
       </p>
       <div class="button-container">
-        <button>Modifier</button>
+        <button @click="addCreateForm">
+          {{ DisplayCreateForm ? "Annuler" : "Ajouter" }}
+        </button>
+        <button @click="addUpdateForm">
+          {{ DisplayUpdateForm ? "Annuler" : "Modifier" }}
+        </button>
         <button @click="deleteStar(DemandeInfo.id)">Supprimer</button>
       </div>
     </div>
@@ -22,7 +27,7 @@
 import Axios from "axios";
 export default {
   name: "card-component",
-  props: ["ListStars", "DemandeInfo"],
+  props: ["ListStars", "DemandeInfo", "DisplayCreateForm", "DisplayUpdateForm"],
   data() {
     return {
       listStars: [],
@@ -30,6 +35,12 @@ export default {
   },
   created() {},
   methods: {
+    addCreateForm() {
+      this.$emit("addCreateForm");
+    },
+    addUpdateForm() {
+      this.$emit("addUpdateForm");
+    },
     deleteStar(id) {
       Axios.delete("/api/stars/delete/" + id)
         .then((response) => {

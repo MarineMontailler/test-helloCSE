@@ -1,5 +1,6 @@
 /* GENERAL CSS RULES */
 body {
+    position: relative;
     box-sizing: border-box;
     background-color: rgb(238, 238, 238);
 }
@@ -9,6 +10,20 @@ h1 {
 li {
     list-style: none;
     cursor: pointer;
+}
+input {
+	border:0;
+}
+button {
+    background-color: rgb(46, 137, 155);
+    color: white;
+    border : none;
+    border-radius: 3px;
+    margin-top: 10px;
+
+}
+button:hover {
+    background-color: rgb(35, 108, 122);
 }
 
 /* LAYOUT */
@@ -23,7 +38,7 @@ li {
     display: flex;
     flex-direction: column;
     width: 200px;
-    background-color: rgb(141, 187, 196);
+    background-color: rgb(113, 189, 204);
     border-radius: 5px 0 0 5px;
 }
 .list-container ul {
@@ -69,7 +84,6 @@ li {
 }
 .button-container button {
     margin-left: 5px;
-    border-radius: 3px;
 }
 
 /* FORM */
@@ -89,9 +103,39 @@ li {
 	padding:0;
 	vertical-align:top;
 	white-space:normal;
+}
+
+/* NOTIFICATIONS */
+.notification-error {
+    position: absolute;
+    bottom: 0;
+    width : 40%;
+    height: 20px;
+    background-color:  rgb(228, 96, 96);
+    color: white;
+    font-size: 10px;
+    text-align: center;
+}
+
+@media (max-width: 760px){
+    .global-container {
+        flex-direction: column;
+
+    }
+    .list-container {
+        width: 90%;
+        margin: auto;
+    }
+    .card-container {
+        width: 90%;
+        margin: auto;
+    }
+    .form-container {
+        width : 80%;
+    }
+    .notification-error {
+        width : 80%;
+    }
 
 }
 
-input {
-	border:0;
-}

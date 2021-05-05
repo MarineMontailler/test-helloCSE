@@ -6,7 +6,7 @@
         type="text"
         id="firstname"
         name="firstname"
-        v-model="newStar.firstname"
+        v-model="DemandeInfo.firstname"
         required
       />
       <label for="lastname">Lastname : </label>
@@ -14,7 +14,7 @@
         type="text"
         id="lastname"
         name="lastname"
-        v-model="newStar.lastname"
+        v-model="DemandeInfo.lastname"
         required
       />
       <label for="image">Url Image : </label>
@@ -22,7 +22,7 @@
         type="text"
         id="image"
         name="image"
-        v-model="newStar.image"
+        v-model="DemandeInfo.image"
         required
       />
       <label for="description">Description : </label>
@@ -30,14 +30,16 @@
         type="textarea"
         id="description"
         name="description"
-        v-model="newStar.description"
+        v-model="DemandeInfo.description"
         required
       />
       <div v-if="errorForm" class="notification-error">
         No empty field please
       </div>
       <div style="text-align: center">
-        <button type="submit" @click="createStar">Créer</button>
+        <button type="submit" @click="updateStarCard(DemandeInfo)">
+          Modifier
+        </button>
       </div>
     </form>
   </div>
@@ -46,31 +48,27 @@
 <script>
 import Axios from "axios";
 export default {
-  name: "creation-card-component",
+  name: "update-card-component",
+  props: ["DemandeInfo", "DisplayUpdateForm"],
+
   data() {
     return {
       errorForm: false,
-      newStar: {},
     };
   },
   created() {
     //
   },
   methods: {
-    createStar() {
-      let newData = {
-        firstname: this.newStar.firstname,
-        lastname: this.newStar.lastname,
-        image: this.newStar.image,
-        description: this.newStar.description,
-      };
+    updateStarCard(DemandeInfo) {
+      let updateStar = DemandeInfo;
       if (
-        this.newStar.firstname != "" &&
-        this.newStar.lastname != "" &&
-        this.newStar.image != "" &&
-        this.newStar.description != ""
+        updateStar.firstname != "" &&
+        updateStar.lastname != "" &&
+        updateStar.image != "" &&
+        updateStar.description != ""
       ) {
-        Axios.post("/api/stars/new", newData)
+        Axios.put("/api/stars/update/" + updateStar.id, updateStar)
           .then((response) => {
             console.log("response ", response);
           })
@@ -79,6 +77,10 @@ export default {
           });
       } else {
         this.errorForm = true;
+        const errorFormAction = () => {
+          this.errorForm = false;
+        };
+        setTimeout(errorFormAction, 3000);
         console.log("error");
       }
     },
