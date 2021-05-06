@@ -5,14 +5,14 @@ Hello, I'm Marine Montailler and this is my repo for your LARAVEL's TEST
 
 
 ## You have to :
-#Fork this project
-#Go on .env file and add your SQL password on line 15
-#Download the DB file helloCSE.sql on your MySQL system (file in mail)
-#Run : 
-#npm install
-#php artisan serve
-#npm run watch
-#Go to your localhost:8000
+<p>Fork this project</p<>
+<p>Go on .env file and add your SQL password on line 15</p<>
+<p>Download the DB file helloCSE.sql on your MySQL system (file in mail)</p<>
+<p>Run : </p<>
+<p>npm install</p<>
+<p>php artisan serve</p<>
+<p>npm run watch</p<>
+<p>Go to your localhost:8000</p<>
 
 
 ## About Front
