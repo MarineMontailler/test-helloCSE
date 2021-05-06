@@ -37,7 +37,7 @@
         No empty field please
       </div>
       <div style="text-align: center">
-        <button type="submit" @click="createStar">Créer</button>
+        <button type="submit" @click="createStar">Add</button>
       </div>
     </form>
   </div>
@@ -50,11 +50,13 @@ export default {
   data() {
     return {
       errorForm: false,
-      newStar: {},
+      newStar: {
+        firstname: "",
+        lastname: "",
+        image: "",
+        description: "",
+      },
     };
-  },
-  created() {
-    //
   },
   methods: {
     createStar() {
@@ -71,14 +73,17 @@ export default {
         this.newStar.description != ""
       ) {
         Axios.post("/api/stars/new", newData)
-          .then((response) => {
-            console.log("response ", response);
-          })
+          .then((response) => {})
           .then(() => {
             this.$emit("reload");
           });
       } else {
+        // Notification Bar OPTIONNAL
         this.errorForm = true;
+        const errorFormAction = () => {
+          this.errorForm = false;
+        };
+        setTimeout(errorFormAction, 3000);
         console.log("error");
       }
     },

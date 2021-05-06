@@ -21,9 +21,6 @@ export default {
       listStars: [],
     };
   },
-  mounted() {
-    //
-  },
   methods: {
     selectStar(id) {
       Axios.get("api/stars/" + id)

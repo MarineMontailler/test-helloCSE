@@ -11,9 +11,8 @@
     </head>
     <body>
         <section id="app">
-            
+            <!-- Got to VueJS componants : -->
             <layout-component></layout-component>
-
         </section>
         <script src="{{ asset('js/app.js') }}" ></script>
     </body>

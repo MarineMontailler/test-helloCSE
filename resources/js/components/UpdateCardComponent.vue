@@ -38,7 +38,7 @@
       </div>
       <div style="text-align: center">
         <button type="submit" @click="updateStarCard(DemandeInfo)">
-          Modifier
+          Update
         </button>
       </div>
     </form>
@@ -55,9 +55,6 @@ export default {
     return {
       errorForm: false,
     };
-  },
-  created() {
-    //
   },
   methods: {
     updateStarCard(DemandeInfo) {
@@ -76,6 +73,7 @@ export default {
             this.$emit("reload");
           });
       } else {
+        // Notification Bar OPTIONNAL
         this.errorForm = true;
         const errorFormAction = () => {
           this.errorForm = false;

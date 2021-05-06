@@ -2,7 +2,7 @@
   <div>
     <div class="card-container">
       <div class="photo-container">
-        <img :src="DemandeInfo.image" :alt="'photo ' + DemandeInfo.firstname" />
+        <img :src="DemandeInfo.image" :alt="DemandeInfo.firstname" />
       </div>
       <h2 class="card-title">
         {{ DemandeInfo.firstname }} {{ DemandeInfo.lastname }}
@@ -12,28 +12,37 @@
       </p>
       <div class="button-container">
         <button @click="addCreateForm">
-          {{ DisplayCreateForm ? "Annuler" : "Ajouter" }}
+          {{ DisplayCreateForm ? "Cancel" : "Add" }}
         </button>
         <button @click="addUpdateForm">
-          {{ DisplayUpdateForm ? "Annuler" : "Modifier" }}
+          {{ DisplayUpdateForm ? "Cancel" : "Update" }}
         </button>
-        <button @click="deleteStar(DemandeInfo.id)">Supprimer</button>
+        <button @click="openModal">Delete</button>
       </div>
     </div>
+    <modal-component
+      v-if="displayModal"
+      :SelectedStar="DemandeInfo"
+      @displayModal="removeModal"
+      @reload="reload"
+    ></modal-component>
   </div>
 </template>
 
 <script>
-import Axios from "axios";
+import ModalComponent from "./ModalComponent.vue";
 export default {
+  components: {
+    "modal-component": ModalComponent,
+  },
   name: "card-component",
   props: ["ListStars", "DemandeInfo", "DisplayCreateForm", "DisplayUpdateForm"],
   data() {
     return {
+      displayModal: false,
       listStars: [],
     };
   },
-  created() {},
   methods: {
     addCreateForm() {
       this.$emit("addCreateForm");
@@ -41,17 +50,14 @@ export default {
     addUpdateForm() {
       this.$emit("addUpdateForm");
     },
-    deleteStar(id) {
-      Axios.delete("/api/stars/delete/" + id)
-        .then((response) => {
-          console.log("Star supprimée");
-        })
-        .then(() => {
-          this.$emit("reload");
-        })
-        .catch((error) => {
-          console.log("error = ", error);
-        });
+    openModal() {
+      this.displayModal = true;
+    },
+    reload() {
+      window.location.href = "./";
+    },
+    removeModal() {
+      this.displayModal = false;
     },
   },
 };

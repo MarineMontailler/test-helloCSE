@@ -3,11 +3,14 @@
     <h1>HelloCSE</h1>
     <br />
     <div class="global-container">
+      <!-- This is the star list (on the left) -->
       <list-stars-component
         :ListStars="listStars"
         :DemandeInfo="selectedStar"
         @changementStar="selectedStar = $event"
       ></list-stars-component>
+
+      <!-- This is the card with star's information (on the middle) -->
       <card-component
         :ListStars="listStars"
         :DemandeInfo="selectedStar"
@@ -18,15 +21,21 @@
         @addUpdateForm="addUpdateForm"
       ></card-component>
     </div>
+
+    <!-- This is the creation form to add a new star to the list (on the bottom) -->
     <div v-if="displayCreateForm">
       <creation-card-component @reload="reload"></creation-card-component>
     </div>
+
+    <!-- This is the update form to change data for a selected star -->
     <div v-if="displayUpdateForm">
       <update-card-component
         :DemandeInfo="selectedStar"
         @reload="reload"
       ></update-card-component>
     </div>
+
+    <!-- This is the footer -->
     <footer>
       <img src="/images/clap.png" alt="clap" width="25" />
       <p>Marine Montailler for HelloCSE</p>
@@ -61,6 +70,15 @@ export default {
     this.fetchStars();
   },
   methods: {
+    //all the methods order by ABC
+    addCreateForm() {
+      this.displayUpdateForm = false;
+      this.displayCreateForm = !this.displayCreateForm;
+    },
+    addUpdateForm() {
+      this.displayCreateForm = false;
+      this.displayUpdateForm = !this.displayUpdateForm;
+    },
     fetchStars() {
       Axios.get("/api/stars")
         .then((response) => {
@@ -71,14 +89,6 @@ export default {
         .catch((error) => {
           console.log("error = ", error);
         });
-    },
-    addCreateForm() {
-      this.displayUpdateForm = false;
-      this.displayCreateForm = !this.displayCreateForm;
-    },
-    addUpdateForm() {
-      this.displayCreateForm = false;
-      this.displayUpdateForm = !this.displayUpdateForm;
     },
     reload() {
       window.location.href = "./";
