@@ -22,9 +22,7 @@ export default {
   methods: {
     deleteStar(id) {
       Axios.delete("/api/stars/delete/" + id)
-        .then((response) => {
-          console.log("Star supprimée");
-        })
+        .then((response) => {})
         .then(() => {
           this.$emit("reload");
         })

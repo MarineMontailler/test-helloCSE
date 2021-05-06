@@ -82,7 +82,6 @@ export default {
     fetchStars() {
       Axios.get("/api/stars")
         .then((response) => {
-          console.log("response ", response.data.data);
           this.listStars = response.data.data;
           this.selectedStar = response.data.data[0];
         })

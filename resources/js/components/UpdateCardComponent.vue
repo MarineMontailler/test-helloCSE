@@ -66,9 +66,7 @@ export default {
         updateStar.description != ""
       ) {
         Axios.put("/api/stars/update/" + updateStar.id, updateStar)
-          .then((response) => {
-            console.log("response ", response);
-          })
+          .then((response) => {})
           .then(() => {
             this.$emit("reload");
           });

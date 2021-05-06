@@ -2220,7 +2220,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/stars").then(function (response) {
-        console.log("response ", response.data.data);
         _this.listStars = response.data.data;
         _this.selectedStar = response.data.data[0];
       })["catch"](function (error) {
@@ -2322,9 +2321,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteStar: function deleteStar(id) {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/stars/delete/" + id).then(function (response) {
-        console.log("Star supprimée");
-      }).then(function () {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/stars/delete/" + id).then(function (response) {}).then(function () {
         _this.$emit("reload");
       })["catch"](function (error) {
         console.log("error = ", error);
@@ -2414,9 +2411,7 @@ __webpack_require__.r(__webpack_exports__);
       var updateStar = DemandeInfo;
 
       if (updateStar.firstname != "" && updateStar.lastname != "" && updateStar.image != "" && updateStar.description != "") {
-        axios__WEBPACK_IMPORTED_MODULE_0___default().put("/api/stars/update/" + updateStar.id, updateStar).then(function (response) {
-          console.log("response ", response);
-        }).then(function () {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().put("/api/stars/update/" + updateStar.id, updateStar).then(function (response) {}).then(function () {
           _this.$emit("reload");
         });
       } else {
