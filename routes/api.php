@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// get stars
+Route::get('stars', 'App\Http\Controllers\StarController@index');
+Route::get('stars/{id}', 'App\Http\Controllers\StarController@starById');
+
+// create new star
+Route::post('stars/new', 'App\Http\Controllers\StarController@create');
+
+// update selected star
+Route::put('stars/update/{id}', 'App\Http\Controllers\StarController@update');
+
+// delete selected star
+Route::delete('stars/delete/{id}', 'App\Http\Controllers\StarController@delete');

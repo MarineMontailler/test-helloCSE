@@ -1,27 +1,186 @@
 /* GENERAL CSS RULES */
+body {
+    position: relative;
+    box-sizing: border-box;
+    background-color: rgb(238, 238, 238);
+    min-height: 100vh;
+}
 h1 {
     text-align: center;
 }
-/* Card */
-.card-container {
+li {
+    list-style: none;
+    cursor: pointer;
+}
+input {
+	border:0;
+}
+button {
+    background-color: rgb(46, 137, 155);
+    color: white;
+    border : none;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: 5px;
+
+}
+button:hover {
+    background-color: rgb(35, 108, 122);
+}
+
+/* LAYOUT */
+.global-container {
     display: flex;
+    justify-content: center;
     margin: auto;
+}
+
+/* LIST  */
+.list-container {
+    display: flex;
     flex-direction: column;
-    width: 90%;
-    height: auto;
+    width: 200px;
+    background-color: rgb(113, 189, 204);
+    border-radius: 5px 0 0 5px;
+}
+.list-container ul {
+    padding:0;
+    margin:0;
+}
+.list-container ul li {
+    width: 100%;
+    padding: 2px 20px;
+}
+.list-style {
+    background-color: white;
+}
+
+/* CARD */
+.card-container {
+    width: 600px;
+    min-height: 250px;
     box-shadow: 1px 1px 5px rgb(197, 197, 197);
-    padding: 5px;
+    padding: 20px;
 }
 .card-container h2 {
     margin-left : 20px;
 }
-.card-top {
-    display: flex;
-    margin : 10px;
-}
+
 .photo-container {
     display: flex;
-    width: 150px;
+    float:left;
+    max-width: 150px;
     height: 200px;
-    object-fit: contain;
+    
 }
+.photo-container img {
+    object-fit: cover;
+    max-width: 150px;
+    height: 200px;
+    padding-right : 20px;
+    padding-bottom: 20px;
+}
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* FORM */
+.form-container {
+    margin : auto;
+    width : 40%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding-bottom : 20px;
+}
+.form-container #description {
+    min-height: 150px;
+    vertical-align:top;
+	overflow:auto;
+    margin:0;
+	border:0;
+	padding:0;
+	vertical-align:top;
+	white-space:normal;
+}
+
+/* NOTIFICATIONS */
+.notification-error {
+    position: absolute;
+    bottom: 0;
+    width : 40%;
+    height: 50px;
+    background-color:  rgb(228, 96, 96);
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding: auto;
+}
+
+/* MODAL */
+.modal-layout{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    z-index:2;
+    background: rgba(104, 104, 104, 0.5)
+}
+.modal-container {
+    position: absolute;
+    bottom: 100px;
+    background-color: rgb(238, 238, 238);
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px rgb(70, 70, 70);
+    width: 70%;
+    height: 150px;
+    font-size: 20px;
+    
+}
+.button-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom:0;
+    width: 100%;
+    height: 60px; 
+}
+footer p {
+    margin: 0 20px;
+}
+
+@media (max-width: 760px){
+    .global-container {
+        flex-direction: column;
+
+    }
+    .list-container {
+        width: 90%;
+        margin: auto;
+    }
+    .card-container {
+        width: 90%;
+        margin: auto;
+    }
+    .form-container {
+        width : 80%;
+    }
+    .notification-error {
+        width : 80%;
+    }
+
+}
+
