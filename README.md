@@ -22,7 +22,8 @@ All my custom CSS rules in public/css/general.css
 Source Wikipédia 
 && About pictures source fenoweb.com
 
-<img src="images/clap.png"
+![Movie](clap.jpg)
+<img src="public/images/clap.png"
      alt="movie icon" />
 
 
