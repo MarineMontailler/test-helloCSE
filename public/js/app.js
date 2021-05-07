@@ -2102,6 +2102,8 @@ __webpack_require__.r(__webpack_exports__);
       if (this.newStar.firstname != "" && this.newStar.lastname != "" && this.newStar.image != "" && this.newStar.description != "") {
         axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/stars/new", newData).then(function (response) {}).then(function () {
           _this.$emit("reload");
+        })["catch"](function (error) {
+          console.log(error);
         });
       } else {
         // Notification Bar OPTIONNAL
@@ -2112,7 +2114,6 @@ __webpack_require__.r(__webpack_exports__);
         };
 
         setTimeout(errorFormAction, 3000);
-        console.log("error");
       }
     }
   }
@@ -2413,6 +2414,8 @@ __webpack_require__.r(__webpack_exports__);
       if (updateStar.firstname != "" && updateStar.lastname != "" && updateStar.image != "" && updateStar.description != "") {
         axios__WEBPACK_IMPORTED_MODULE_0___default().put("/api/stars/update/" + updateStar.id, updateStar).then(function (response) {}).then(function () {
           _this.$emit("reload");
+        })["catch"](function (error) {
+          console.log(error);
         });
       } else {
         // Notification Bar OPTIONNAL
@@ -2423,7 +2426,6 @@ __webpack_require__.r(__webpack_exports__);
         };
 
         setTimeout(errorFormAction, 3000);
-        console.log("error");
       }
     }
   }
@@ -45126,7 +45128,7 @@ var render = function() {
       _c("div", { staticStyle: { "text-align": "center" } }, [
         _c(
           "button",
-          { attrs: { type: "submit" }, on: { click: _vm.createStar } },
+          { attrs: { type: "button" }, on: { click: _vm.createStar } },
           [_vm._v("Add")]
         )
       ])
@@ -45465,7 +45467,7 @@ var render = function() {
         _c(
           "button",
           {
-            attrs: { type: "submit" },
+            attrs: { type: "button" },
             on: {
               click: function($event) {
                 return _vm.updateStarCard(_vm.DemandeInfo)

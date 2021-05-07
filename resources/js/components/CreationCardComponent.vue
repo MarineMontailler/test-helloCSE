@@ -37,7 +37,7 @@
         No empty field please
       </div>
       <div style="text-align: center">
-        <button type="submit" @click="createStar">Add</button>
+        <button type="button" @click="createStar">Add</button>
       </div>
     </form>
   </div>
@@ -76,6 +76,9 @@ export default {
           .then((response) => {})
           .then(() => {
             this.$emit("reload");
+          })
+          .catch((error) => {
+            console.log(error);
           });
       } else {
         // Notification Bar OPTIONNAL
@@ -84,7 +87,6 @@ export default {
           this.errorForm = false;
         };
         setTimeout(errorFormAction, 3000);
-        console.log("error");
       }
     },
   },
