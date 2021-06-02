@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Test HelloCSE - Laravel </title>
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/general.css') }}" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
+        <link href="/css/general.css" rel="stylesheet">
         
     </head>
     <body>
@@ -14,6 +14,6 @@
             <!-- Got to VueJS componants : -->
             <layout-component></layout-component>
         </section>
-        <script src="{{ asset('js/app.js') }}" ></script>
+        <script src="/js/app.js" ></script>
     </body>
 </html>

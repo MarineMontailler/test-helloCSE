@@ -11,7 +11,6 @@ Hello, I'm Marine Montailler and this is my repo for your LARAVEL's TEST
 <p>Run : </p<>
 <p>npm install</p<>
 <p>php artisan serve</p<>
-<p>npm run watch</p<>
 <p>Go to your localhost:8000</p<>
 
 
